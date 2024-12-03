@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'auth_page.dart'; // File auth_page.dart sudah mencakup SignInSignUpPage
 import 'homepage.dart';
 import 'profile_page.dart';
-
+import 'viewlist.dart';
 void main() {
   runApp(const GymApp());
 }
@@ -82,10 +82,7 @@ class _MainPageState extends State<MainPage> {
   // Daftar halaman yang akan ditampilkan oleh IndexedStack
   final List<Widget> _pages = [
     HomePage(),
-    Container(
-      color: Colors.blue,
-      child: const Center(child: Text('Camera Page Placeholder')),
-    ),
+    ViewList(),
     ProfilePage(),
   ];
 
@@ -109,8 +106,8 @@ class _MainPageState extends State<MainPage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Camera',
+            icon: Icon(Icons.map),
+            label: 'location',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

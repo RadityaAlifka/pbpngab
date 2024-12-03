@@ -10,9 +10,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  url_launcher: 
+  permission_handler: ^10.0.0
+  geolocator: ^9.0.0
+  image_picker: ^0.8.5+3
   cached_network_image: ^3.2.3
   percent_indicator: ^4.2.2
-  shared_preferences: ^2.0.15 
+  shared_preferences: ^2.0.15
+  printing: ^5.10.1
+  pdf: ^3.8.1 
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'MembershipPage.dart';
 import 'user.dart';
 import 'EditProfilePage.dart';
 import 'auth_page.dart';
@@ -140,7 +141,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-                      
                       Column(
                         children: [
                           Text(
@@ -214,7 +214,10 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Tambahkan fungsi activate membership di sini
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MembershipPage()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,

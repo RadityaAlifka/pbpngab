@@ -1,7 +1,7 @@
 class Equipment {
-  final String imageUrl;
-  final String name;
-  final String description;
+  String imageUrl;
+  String name;
+  String description;
 
   Equipment({
     required this.imageUrl,

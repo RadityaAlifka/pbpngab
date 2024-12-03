@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import 'user.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -15,6 +17,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   late TextEditingController emailController;
   late TextEditingController weightController;
   late TextEditingController heightController;
+  File? _profileImage; 
+  final ImagePicker _picker = ImagePicker(); 
 
   @override
   void initState() {
@@ -36,6 +40,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
+  // Fungsi untuk memilih gambar dari galeri atau kamera
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(
+      source: ImageSource.gallery, // Bisa menggunakan gallery atau kamera
+    );
+    if (image != null) {
+      setState(() {
+        _profileImage = File(image.path); // Menyimpan gambar ke dalam file
+      });
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +65,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Menampilkan foto profil jika ada
+              Center(
+                child: GestureDetector(
+                  onTap: _pickImage, // Menambahkan gesture untuk memilih gambar
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundColor: Colors.grey[300],
+                    backgroundImage: _profileImage != null
+                        ? FileImage(_profileImage!)
+                        : AssetImage('assets/default_profile.png')
+                            as ImageProvider,
+                    child: _profileImage == null
+                        ? Icon(Icons.camera_alt, size: 30, color: Colors.white)
+                        : null,
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
               TextField(
                 controller: usernameController,
                 decoration: InputDecoration(labelText: "Username"),
